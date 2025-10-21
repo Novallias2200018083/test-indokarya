@@ -21,7 +21,7 @@ const Dashboard = () => {
   const handleUpdate = async (itemData) => {
     await updateItem(editingItem.id, itemData);
     setEditingItem(null);
-    setShowForm(false); // Tambahkan ini agar form tertutup setelah update
+    setShowForm(false); 
   };
 
   const handleEdit = (item) => {

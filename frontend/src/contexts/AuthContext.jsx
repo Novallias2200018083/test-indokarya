@@ -19,15 +19,13 @@ export const AuthProvider = ({ children }) => {
 
   const API_BASE = 'http://localhost:8000/api';
   
-  // Konfigurasi default axios
-  // Perlu dilakukan di sini agar axios di file lain (seperti useItems.js) otomatis membawa token
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      // Set header default untuk semua request axios
+      
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.defaults.withCredentials = true; // Tambahkan ini jika menggunakan Sanctum
+      axios.defaults.withCredentials = true; 
       fetchUser();
     } else {
       setLoading(false);
@@ -39,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.get(`${API_BASE}/me`);
       setUser(response.data);
     } catch (error) {
-      // Token tidak valid, hapus
+      
       localStorage.removeItem('token');
       delete axios.defaults.headers.common['Authorization'];
     } finally {
@@ -52,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     const { access_token, user } = response.data;
     
     localStorage.setItem('token', access_token);
-    // Set header setelah login
+   
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
     axios.defaults.withCredentials = true;
     setUser(user);
@@ -65,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     const { access_token, user } = response.data;
     
     localStorage.setItem('token', access_token);
-    // Set header setelah register
+    
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
     axios.defaults.withCredentials = true;
     setUser(user);
@@ -75,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      // Axios akan menggunakan token yang sudah tersimpan untuk request logout ini
+     
       await axios.post(`${API_BASE}/logout`); 
     } catch (error) {
       console.error('Logout error:', error);

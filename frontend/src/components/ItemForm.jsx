@@ -1,5 +1,3 @@
-// src/components/ItemForm.jsx
-
 import { useState, useEffect } from 'react';
 import { Save, X } from 'lucide-react';
 
@@ -17,7 +15,7 @@ const ItemForm = ({ item, onSubmit, onCancel }) => {
         description: item.description || ''
       });
     } else {
-      setFormData({ title: '', description: '' }); // Reset form saat beralih dari edit ke create
+      setFormData({ title: '', description: '' }); 
     }
   }, [item]);
 
@@ -34,10 +32,10 @@ const ItemForm = ({ item, onSubmit, onCancel }) => {
     
     try {
       await onSubmit(formData);
-      // Form akan di-reset/tutup di parent (Dashboard) via onCancel/handleUpdate/handleCreate
+      
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Tambahkan penanganan error UI jika diperlukan
+      
     } finally {
       setLoading(false);
     }
@@ -85,7 +83,7 @@ const ItemForm = ({ item, onSubmit, onCancel }) => {
           <button
             type="button"
             onClick={onCancel}
-            disabled={loading} // Tambahkan disabled agar tidak bisa cancel saat loading
+            disabled={loading} 
             className="btn btn-secondary flex items-center space-x-2"
           >
             <X className="h-4 w-4" />
@@ -94,7 +92,7 @@ const ItemForm = ({ item, onSubmit, onCancel }) => {
           
           <button
             type="submit"
-            disabled={loading || !formData.title.trim()} // Tambahkan validasi minimal title
+            disabled={loading || !formData.title.trim()} 
             className="btn btn-primary flex items-center space-x-2"
           >
             {loading ? (

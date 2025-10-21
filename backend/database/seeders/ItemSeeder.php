@@ -13,7 +13,7 @@ class ItemSeeder extends Seeder
 
     public function run(): void
     {
-        // Pastikan users sudah ada
+        
         $users = User::all();
         
         if ($users->isEmpty()) {
@@ -22,7 +22,7 @@ class ItemSeeder extends Seeder
         }
 
         $items = [
-            // Items untuk user pertama (Admin)
+            
             [
                 'title' => 'Project Management Tool Development',
                 'description' => 'A comprehensive web application for managing projects and tasks with real-time team collaboration features, progress tracking, and reporting dashboard.',
@@ -52,7 +52,7 @@ class ItemSeeder extends Seeder
                 'updated_at' => now()->subDays(1),
             ],
 
-            // Items untuk user kedua (John Doe)
+           
             [
                 'title' => 'Weekly Grocery Shopping List',
                 'description' => 'Essential items needed for the week including fresh fruits, vegetables, dairy products, protein sources, and household supplies. Budget: $150.',
@@ -82,7 +82,7 @@ class ItemSeeder extends Seeder
                 'updated_at' => now()->subDays(2),
             ],
 
-            // Items untuk user ketiga (Jane Smith)
+            
             [
                 'title' => 'Bali Vacation Itinerary',
                 'description' => 'Detailed 10-day travel plan for Bali including flight details, hotel reservations, daily activities, restaurant recommendations, and cultural experiences.',
@@ -112,7 +112,7 @@ class ItemSeeder extends Seeder
                 'updated_at' => now()->subDays(4),
             ],
 
-            // Items untuk user keempat (Michael Johnson)
+          
             [
                 'title' => 'Startup Business Plan 2024',
                 'description' => 'Comprehensive business plan for tech startup including market analysis, competitive research, financial projections, marketing strategy, and operational plan.',
@@ -142,7 +142,7 @@ class ItemSeeder extends Seeder
                 'updated_at' => now()->subDays(12),
             ],
 
-            // Items untuk user kelima (Sarah Wilson)
+           
             [
                 'title' => 'Annual Company Event Planning',
                 'description' => 'Complete checklist for organizing the company annual conference including venue selection, catering, guest speakers, marketing, and budget management.',
@@ -181,7 +181,6 @@ class ItemSeeder extends Seeder
         $this->command->info('Total users: ' . $users->count());
         $this->command->info('Total items created: ' . count($items));
         
-        // Show sample login credentials
         $this->command->info('');
         $this->command->info('=== SAMPLE LOGIN CREDENTIALS ===');
         $this->command->info('Admin: admin@example.com / password123');

@@ -1,10 +1,8 @@
-// src/components/ItemList.jsx
-
 import { Edit2, Trash2, Calendar } from 'lucide-react';
 
 const ItemList = ({ items, loading, onEdit, onDelete }) => {
   const formatDate = (dateString) => {
-    // Pastikan dateString valid sebelum format
+    
     if (!dateString) return 'N/A';
     try {
         return new Date(dateString).toLocaleDateString('en-US', {

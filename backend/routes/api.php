@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Sanctum CSRF route (harus sebelum middleware auth)
 Route::get('/sanctum/csrf-cookie', function (Request $request) {
     return response()->json(['message' => 'CSRF cookie set']);
 });
@@ -23,7 +22,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('items', ItemController::class);
 });
 
-// Fallback untuk API route yang tidak ditemukan
+// Fallback route untuk menangani endpoint yang tidak ditemukan
 Route::fallback(function () {
     return response()->json([
         'message' => 'API endpoint not found'

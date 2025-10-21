@@ -11,14 +11,13 @@ use Illuminate\Validation\ValidationException; // Untuk penanganan error validas
 
 class ItemController extends Controller
 {
-    // Konstruktor dihilangkan karena middleware sudah dihandle di routes/api.php
+    
 
     public function index(): JsonResponse
     {
         try {
             Log::info('Fetching items for user: ' . Auth::id());
             
-            // Perbaikan: Method items() di Model User kini sudah ada!
             $items = Auth::user()->items()->latest()->get(); 
             
             Log::info('Items fetched successfully: ' . $items->count() . ' items');
